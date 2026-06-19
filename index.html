@@ -1,7 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
+
 <meta charset="UTF-8">
 
 <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
@@ -9,32 +10,30 @@
 <style>
 
 *{
-box-sizing:border-box;
 margin:0;
 padding:0;
+box-sizing:border-box;
 }
 
 body{
 
-padding:20px;
-
 background:transparent;
+padding:15px;
 
 font-family:'DotGothic16',sans-serif;
 
 }
 
-/* 視窗 */
+/* Win98 視窗 */
 
 .window{
 
 width:100%;
+max-width:430px;
 
-max-width:420px;
+background:#FFFCFE;
 
-background:#fffdfd;
-
-border:2px solid #e4d8eb;
+border:2px solid #E7DCEB;
 
 border-radius:10px;
 
@@ -48,9 +47,9 @@ overflow:hidden;
 
 height:34px;
 
-background:#f6eef8;
+background:#F7F1F9;
 
-border-bottom:1px solid #e4d8eb;
+border-bottom:1px solid #E7DCEB;
 
 display:flex;
 
@@ -68,9 +67,9 @@ padding:0 10px;
 
 font-size:12px;
 
-letter-spacing:1px;
+color:#8D7A9E;
 
-color:#8f7ca5;
+letter-spacing:1px;
 
 }
 
@@ -87,24 +86,20 @@ gap:5px;
 .btn{
 
 width:14px;
-
 height:14px;
 
-border:1px solid #cdbdd8;
+border:1px solid #D8C8E0;
 
-background:#fff;
-
-font-size:9px;
+background:#FFFFFF;
 
 display:flex;
 
 align-items:center;
-
 justify-content:center;
 
-color:#9c8bb1;
+font-size:8px;
 
-line-height:1;
+color:#9C8BB1;
 
 }
 
@@ -112,29 +107,59 @@ line-height:1;
 
 .content{
 
-padding:18px;
+padding:20px;
 
 font-size:13px;
 
-line-height:2.2;
-
-color:#6f617f;
+color:#6B6178;
 
 }
 
-/* 小分隔 */
+/* 區塊 */
 
-.divider{
+.item{
 
-margin:10px 0;
-
-border-top:1px dashed #eadff0;
+margin-bottom:18px;
 
 }
+
+/* 小標籤 */
 
 .label{
 
-color:#9d8ab4;
+display:inline-block;
+
+padding:3px 8px;
+
+font-size:10px;
+
+background:#F8F3FA;
+
+border:1px solid #ECE2F1;
+
+border-radius:999px;
+
+color:#9A88AF;
+
+margin-bottom:8px;
+
+}
+
+/* 分隔線 */
+
+.divider{
+
+border-top:1px dashed #E8DDED;
+
+margin:14px 0;
+
+}
+
+/* 內容字 */
+
+.value{
+
+padding-left:2px;
 
 }
 
@@ -164,9 +189,9 @@ color:#9d8ab4;
 
 </div>
 
-<div class="content" id="currently">
+<div id="currently" class="content">
 
-讀取中...
+Loading...
 
 </div>
 
@@ -175,44 +200,62 @@ color:#9d8ab4;
 <script>
 
 fetch('./currently.json')
-
 .then(response => response.json())
-
 .then(data => {
 
 document.getElementById('currently').innerHTML = `
 
-<div>
+<div class="item">
 
-<span class="label">最近聆聽：</span>
+<div class="label">
+最近聆聽
+</div>
+
+<div class="value">
 ${data.listening}
+</div>
 
 </div>
 
 <div class="divider"></div>
 
-<div>
+<div class="item">
 
-<span class="label">正在沉迷：</span>
+<div class="label">
+正在沉迷
+</div>
+
+<div class="value">
 ${data.obsession}
+</div>
 
 </div>
 
 <div class="divider"></div>
 
-<div>
+<div class="item">
 
-<span class="label">在玩什麼：</span>
+<div class="label">
+在玩什麼
+</div>
+
+<div class="value">
 ${data.playing}
+</div>
 
 </div>
 
 <div class="divider"></div>
 
-<div>
+<div class="item">
 
-<span class="label">心情：</span>
+<div class="label">
+心情
+</div>
+
+<div class="value">
 ${data.mood}
+</div>
 
 </div>
 
@@ -224,4 +267,3 @@ ${data.mood}
 
 </body>
 </html>
-
