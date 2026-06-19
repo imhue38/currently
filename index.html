@@ -1,0 +1,227 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+
+padding:20px;
+
+background:transparent;
+
+font-family:'DotGothic16',sans-serif;
+
+}
+
+/* 視窗 */
+
+.window{
+
+width:100%;
+
+max-width:420px;
+
+background:#fffdfd;
+
+border:2px solid #e4d8eb;
+
+border-radius:10px;
+
+overflow:hidden;
+
+}
+
+/* 標題列 */
+
+.titlebar{
+
+height:34px;
+
+background:#f6eef8;
+
+border-bottom:1px solid #e4d8eb;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 10px;
+
+}
+
+/* 標題 */
+
+.title{
+
+font-size:12px;
+
+letter-spacing:1px;
+
+color:#8f7ca5;
+
+}
+
+/* Win98按鈕 */
+
+.buttons{
+
+display:flex;
+
+gap:5px;
+
+}
+
+.btn{
+
+width:14px;
+
+height:14px;
+
+border:1px solid #cdbdd8;
+
+background:#fff;
+
+font-size:9px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+color:#9c8bb1;
+
+line-height:1;
+
+}
+
+/* 內容 */
+
+.content{
+
+padding:18px;
+
+font-size:13px;
+
+line-height:2.2;
+
+color:#6f617f;
+
+}
+
+/* 小分隔 */
+
+.divider{
+
+margin:10px 0;
+
+border-top:1px dashed #eadff0;
+
+}
+
+.label{
+
+color:#9d8ab4;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="window">
+
+<div class="titlebar">
+
+<div class="title">
+♡ CURRENTLY ♡
+</div>
+
+<div class="buttons">
+
+<div class="btn">─</div>
+
+<div class="btn">□</div>
+
+<div class="btn">✕</div>
+
+</div>
+
+</div>
+
+<div class="content" id="currently">
+
+讀取中...
+
+</div>
+
+</div>
+
+<script>
+
+fetch('./currently.json')
+
+.then(response => response.json())
+
+.then(data => {
+
+document.getElementById('currently').innerHTML = `
+
+<div>
+
+<span class="label">最近聆聽：</span>
+${data.listening}
+
+</div>
+
+<div class="divider"></div>
+
+<div>
+
+<span class="label">正在沉迷：</span>
+${data.obsession}
+
+</div>
+
+<div class="divider"></div>
+
+<div>
+
+<span class="label">在玩什麼：</span>
+${data.playing}
+
+</div>
+
+<div class="divider"></div>
+
+<div>
+
+<span class="label">心情：</span>
+${data.mood}
+
+</div>
+
+`;
+
+});
+
+</script>
+
+</body>
+</html>
+```
